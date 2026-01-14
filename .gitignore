@@ -1,0 +1,23 @@
+# Build folders
+build/
+dist/
+bin/
+obj/
+
+# IDE folders
+.vs/
+.idea/
+.vscode/
+nbproject/private/
+
+# Compiled files
+*.class
+*.exe
+*.dll
+
+# Archives
+*.zip
+*.rar
+
+# Logs
+*.log

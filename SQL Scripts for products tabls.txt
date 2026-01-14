@@ -1,0 +1,117 @@
+
+//For TheGadgetHubAPIDB Database
+
+
+USE TheGadgetHubAPIDB;
+GO
+
+INSERT INTO Products (Id, Name, Description)
+VALUES
+(1, 'Samsung Galaxy S21', 'Flagship Samsung smartphone with powerful performance and premium design'),
+(2, 'iPhone 15', 'Latest Apple smartphone featuring advanced camera and A16 chip'),
+(3, 'Google Pixel 8', 'Google flagship phone with AI-powered camera and clean Android'),
+(4, 'OnePlus 11', 'High-performance OnePlus phone with smooth display and fast charging'),
+(5, 'Xiaomi 13 Pro', 'Premium Xiaomi smartphone with Leica camera technology'),
+(6, 'Motorola Edge 40', 'Stylish Motorola phone with OLED display and fast charging'),
+(7, 'Sony Xperia 1 V', 'Sony flagship phone designed for creators and photographers'),
+(8, 'Asus ROG Phone 7', 'Gaming smartphone with high refresh rate and advanced cooling'),
+(9, 'Nothing Phone 2', 'Unique transparent design phone with smooth performance'),
+(10, 'Realme GT 3', 'High-speed smartphone with ultra-fast charging support'),
+(11, 'Samsung Galaxy Buds 2', 'Wireless earbuds with active noise cancellation'),
+(12, 'Apple AirPods Pro 2', 'Premium Apple earbuds with spatial audio and ANC'),
+(13, 'Sony WF-1000XM5', 'Industry-leading noise cancelling wireless earbuds'),
+(14, 'Jabra Elite 7 Pro', 'True wireless earbuds with clear call quality'),
+(15, 'Samsung Galaxy Watch 6', 'Smartwatch with health tracking and AMOLED display'),
+(16, 'Apple Watch Series 9', 'Advanced smartwatch with fitness and health features'),
+(17, 'Fitbit Versa 4', 'Fitness-focused smartwatch with GPS and health monitoring'),
+(18, 'Garmin Venu 2', 'Premium fitness smartwatch with AMOLED display'),
+(19, 'Amazfit GTR 4', 'Smartwatch with long battery life and fitness tracking'),
+(20, 'Huawei Watch GT 4', 'Stylish smartwatch with advanced health monitoring'),
+(21, 'Samsung M02', 'Testing');
+GO
+
+-----------------------------------------------------------------------------------------------------------------
+
+//For TechWorldDB Database
+
+
+
+USE TechWorldAPIDB;
+GO
+
+INSERT INTO Products (Id, Name, Price, Stock, Description, DeliveryDate)
+VALUES
+(1, 'Dummy Product 1', 10000.00, 5, 'Placeholder product', '2026-01-03 01:29:19.350'),
+(2, 'Dummy Product 2', 15000.00, 10, 'Placeholder product', '2026-01-03 01:29:19.350'),
+(3, 'Dummy Product 3', 20000.00, 8, 'Placeholder product', '2026-01-03 01:29:19.350'),
+(4, 'OnePlus 11', 185000.00, 9, 'Flagship OnePlus smartphone', '2026-01-03 01:29:19.353'),
+(5, 'Xiaomi 13 Pro', 210000.00, 8, 'Premium Xiaomi smartphone', '2026-01-03 01:29:19.353'),
+(6, 'Motorola Edge 40', 135000.00, 15, 'Mid-range Motorola smartphone', '2026-01-03 01:29:19.353'),
+(7, 'Sony WF-1000XM5', 95000.00, 20, 'Noise cancelling earbuds', '2026-01-03 01:29:19.353'),
+(8, 'Fitbit Versa 4', 78000.00, 12, 'Fitness smartwatch', '2026-01-03 01:29:19.353'),
+(9, 'Garmin Venu 2', 165000.00, 7, 'Advanced GPS smartwatch', '2026-01-03 01:29:19.353'),
+(10, 'Apple AirPods Pro 2', 120000.00, 25, 'Apple noise cancelling earbuds', '2026-01-03 01:29:19.353'),
+(11, 'Samsung Galaxy Watch 6', 140000.00, 10, 'Samsung smartwatch', '2026-01-03 01:29:19.353'),
+(12, 'Samsung Galaxy S21', 175000.00, 9, 'Samsung flagship smartphone', '2026-01-03 01:29:19.353'),
+(13, 'Samsung M02', 10000.00, 19, 'testing', '2026-01-03 11:24:20.519');
+GO
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+//For GadgetCentralAPIDB Database
+
+
+
+USE GadgetCentralAPIDB;
+GO
+
+INSERT INTO Products (Id, Name, Price, Stock, Description, DeliveryDate)
+VALUES
+(1, 'Dummy Product 1', 10000.00, 5, 'Placeholder product', '2026-01-03 03:49:51.460'),
+(2, 'Dummy Product 2', 15000.00, 10, 'Placeholder product', '2026-01-03 03:49:51.460'),
+(3, 'Dummy Product 3', 20000.00, 8, 'Placeholder product', '2026-01-03 03:49:51.460'),
+(4, 'Sony Xperia 1 V', 185000.00, 10, 'Flagship Sony smartphone', '2026-01-03 03:49:51.463'),
+(5, 'Asus ROG Phone 7', 210000.00, 7, 'High-end gaming smartphone', '2026-01-03 03:49:51.463'),
+(6, 'Nothing Phone 2', 135000.00, 15, 'Stylish mid-range smartphone', '2026-01-03 03:49:51.463'),
+(7, 'Realme GT 3', 95000.00, 20, 'Affordable performance smartphone', '2026-01-03 03:49:51.463'),
+(8, 'Sony WF-1000XM5', 78000.00, 12, 'Noise cancelling earbuds', '2026-01-03 03:49:51.463'),
+(9, 'Jabra Elite 7 Pro', 165000.00, 7, 'Premium Jabra earbuds', '2026-01-03 03:49:51.463'),
+(10, 'Amazfit GTR 4', 120000.00, 25, 'Feature-rich smartwatch', '2026-01-03 03:49:51.463'),
+(11, 'Huawei Watch GT 4', 140000.00, 10, 'Huawei smartwatch with GPS', '2026-01-03 03:49:51.463'),
+(12, 'Samsung Galaxy Buds 2', 175000.00, 9, 'Samsung true wireless earbuds', '2026-01-03 03:49:51.463'),
+(13, 'Motorola Edge 40', 155000.00, 11, 'Motorola mid-range smartphone', '2026-01-03 03:49:51.463');
+GO
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+//For GadgetCentralAPIDB Database
+
+
+USE ElectroComAPIDB;
+GO
+
+INSERT INTO Products (Id, Name, Price, Stock, Description, DeliveryDate)
+VALUES
+(1, 'Dummy Product 1', 10000.00, 5, 'Placeholder product', '2026-01-03 04:03:12.413'),
+(2, 'Dummy Product 2', 15000.00, 10, 'Placeholder product', '2026-01-03 04:03:12.413'),
+(3, 'Dummy Product 3', 20000.00, 8, 'Placeholder product', '2026-01-03 04:03:12.413'),
+(4, 'Samsung Galaxy S21', 175000.00, 10, 'Samsung flagship smartphone', '2026-01-03 04:03:12.413'),
+(5, 'iPhone 15', 260000.00, 7, 'Latest Apple iPhone', '2026-01-03 04:03:12.413'),
+(6, 'Google Pixel 8', 180000.00, 12, 'Google Pixel smartphone', '2026-01-03 04:03:12.413'),
+(7, 'Asus ROG Phone 7', 210000.00, 7, 'High-end gaming smartphone', '2026-01-03 04:03:12.413'),
+(8, 'Nothing Phone 2', 135000.00, 15, 'Stylish mid-range smartphone', '2026-01-03 04:03:12.413'),
+(9, 'Samsung Galaxy Buds 2', 120000.00, 20, 'Samsung true wireless earbuds', '2026-01-03 04:03:12.413'),
+(10, 'Apple AirPods Pro 2', 125000.00, 25, 'Apple noise cancelling earbuds', '2026-01-03 04:03:12.413'),
+(11, 'Jabra Elite 7 Pro', 165000.00, 10, 'Premium Jabra earbuds', '2026-01-03 04:03:12.413'),
+(12, 'Samsung Galaxy Watch 6', 140000.00, 10, 'Samsung smartwatch', '2026-01-03 04:03:12.413'),
+(13, 'Apple Watch Series 9', 300000.00, 5, 'Latest Apple smartwatch', '2026-01-03 04:03:12.413');
+GO
