@@ -1,0 +1,138 @@
+﻿@page
+@model ShopWeb.Pages.ItemsModel
+@{
+    var searchTerm = Request.Query["searchTerm"].ToString();
+    var filteredItems = string.IsNullOrWhiteSpace(searchTerm)
+        ? Model.Items
+        : Model.Items.Where(i => i.Name.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)).ToList();
+}
+
+<h2 class="text-center my-4">Explore Our Latest Products</h2>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+            <p class="text-center mb-4">
+                Add your favorite products now and get the best prices in the market!
+                We compare prices from multiple distributors to bring you the best deals.
+                Just add your products and checkout — we’ll notify you with product prices, quotations, and other important details.
+                Start building your wishlist today and save more!
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<!-- Search Box -->
+<form method="get" class="search-box">
+    <input type="text" name="searchTerm" value="@searchTerm" placeholder="Search by product name..." />
+    <button type="submit">Search</button>
+</form>
+
+<!-- Products -->
+<div class="row">
+    @foreach (var item in filteredItems)
+    {
+        string imageFile = "default.jpg";
+
+        if (item.Name.Contains("Samsung Galaxy S21", StringComparison.OrdinalIgnoreCase))
+        {
+            imageFile = "samsung_s21.jpg";
+        }
+        else if (item.Name.Contains("iPhone 15", StringComparison.OrdinalIgnoreCase))
+        {
+            imageFile = "iphone_15.jpg";
+        }
+        else if (item.Name.Contains("Google Pixel 8", StringComparison.OrdinalIgnoreCase))
+        {
+            imageFile = "pixel_8.jpg";
+        }
+        else if (item.Name.Contains("OnePlus 11", StringComparison.OrdinalIgnoreCase))
+        {
+            imageFile = "oneplus_11.jpg";
+        }
+        else if (item.Name.Contains("Xiaomi 13 Pro", StringComparison.OrdinalIgnoreCase))
+        {
+            imageFile = "xiaomi_13pro.jpg";
+        }
+        else if (item.Name.Contains("Motorola Edge 40", StringComparison.OrdinalIgnoreCase))
+        {
+            imageFile = "motorola_edge40.jpg";
+        }
+        else if (item.Name.Contains("Sony Xperia 1 V", StringComparison.OrdinalIgnoreCase))
+        {
+            imageFile = "sony_xperia_1v.jpg";
+        }
+        else if (item.Name.Contains("Asus ROG Phone 7", StringComparison.OrdinalIgnoreCase))
+        {
+            imageFile = "rog_phone_7.jpg";
+        }
+        else if (item.Name.Contains("Nothing Phone 2", StringComparison.OrdinalIgnoreCase))
+        {
+            imageFile = "nothing_phone_2.jpg";
+        }
+        else if (item.Name.Contains("Realme GT 3", StringComparison.OrdinalIgnoreCase))
+        {
+            imageFile = "realme_gt3.jpg";
+        }
+        else if (item.Name.Contains("Samsung Galaxy Buds 2", StringComparison.OrdinalIgnoreCase))
+        {
+            imageFile = "galaxy_buds_2.jpg";
+        }
+        else if (item.Name.Contains("AirPods Pro 2", StringComparison.OrdinalIgnoreCase))
+        {
+            imageFile = "airpods_pro_2.jpg";
+        }
+        else if (item.Name.Contains("WF-1000XM5", StringComparison.OrdinalIgnoreCase))
+        {
+            imageFile = "sony_wf1000xm5.jpg";
+        }
+        else if (item.Name.Contains("Jabra Elite 7 Pro", StringComparison.OrdinalIgnoreCase))
+        {
+            imageFile = "jabra_elite_7pro.jpg";
+        }
+        else if (item.Name.Contains("Galaxy Watch 6", StringComparison.OrdinalIgnoreCase))
+        {
+            imageFile = "galaxy_watch_6.jpg";
+        }
+        else if (item.Name.Contains("Watch Series 9", StringComparison.OrdinalIgnoreCase))
+        {
+            imageFile = "apple_watch_9.jpg";
+        }
+        else if (item.Name.Contains("Fitbit Versa 4", StringComparison.OrdinalIgnoreCase))
+        {
+            imageFile = "fitbit_versa_4.jpg";
+        }
+        else if (item.Name.Contains("Garmin Venu 2", StringComparison.OrdinalIgnoreCase))
+        {
+            imageFile = "garmin_venu_2.jpg";
+        }
+        else if (item.Name.Contains("Amazfit GTR 4", StringComparison.OrdinalIgnoreCase))
+        {
+            imageFile = "amazfit_gtr_4.jpg";
+        }
+        else if (item.Name.Contains("Watch GT 4", StringComparison.OrdinalIgnoreCase))
+        {
+            imageFile = "huawei_watch_gt4.jpg";
+        }
+        <div class="col-md-4 mb-4">
+            <div class="product-card p-3 shadow rounded text-center">
+                <h5 class="card-title">@item.Name</h5>
+                <img src="@Url.Content("~/images/" + imageFile)" alt="@item.Name" class="product-image mb-3" />
+                <p><strong>Description:</strong><br />@item.Description</p>
+                <form method="post" asp-page-handler="AddToCart">
+                    <input type="hidden" name="id" value="@item.Id" />
+                    <input type="hidden" name="name" value="@item.Name" />
+                    <input type="hidden" name="description" value="@item.Description" />
+
+                    <div class="form-inline-group">
+                        <label for="quantity">Qty:</label>
+                        <input type="number" name="quantity" id="quantity" value="1" min="1" class="form-control quantity-input" />
+                        <button type="submit" class="btn btn-primary btn-sm">Add to Cart</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    }
+</div>

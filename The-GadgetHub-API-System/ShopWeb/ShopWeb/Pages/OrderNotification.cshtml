@@ -1,0 +1,147 @@
+﻿@page
+@model OrderNotificationModel
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
+@{
+    ViewData["Title"] = "Order Notifications";
+}
+
+<h2 class="text-center mb-4 fw-bold display-5">Order Notifications</h2>
+
+<div id="notifications-container">
+    @if (Model.Notifications.Any())
+    {
+        int index = 0;
+        foreach (var notification in Model.Notifications)
+        {
+            <div class="alert alert-success" id="notification-@index">
+                <h5 class="mb-3">Distributor: <strong>@notification.Distributor</strong></h5>
+                <p class="mb-1">Total Price: <strong>@notification.TotalAmount.ToString("N2") LKR</strong></p>
+                <p class="mb-3">Delivery Date: <strong>@notification.DeliveryDate.ToShortDateString()</strong></p>
+
+               @if (notification.QuotationItems.Any())
+{
+    <table class="table table-bordered mb-3">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Total Price</th>
+                <th>Product Delivery Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in notification.QuotationItems)
+            {
+                <tr>
+                    <td>@item.ProductName</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.UnitPrice.ToString("N2")</td>
+                    <td>@item.TotalPrice.ToString("N2")</td>
+                    <td>@item.ProductDeliveryDate.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+
+}
+
+                
+
+                <div class="d-flex gap-2 mt-3">
+                    <button class="btn btn-success buy-now-btn" data-index="@index">Buy Now</button>
+                    <button class="btn btn-danger remove-btn" data-index="@index">Remove</button>
+                </div>
+            </div>
+            index++;
+        }
+    }
+    else
+    {
+        <div class="alert alert-warning text-center mt-4">
+            No notifications found.
+        </div>
+    }
+</div>
+
+<div class="d-flex justify-content-center mt-4">
+    <a asp-page="/Index" class="btn btn-primary">Back to Home</a>
+</div>
+
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const antiForgeryToken = '@Antiforgery.GetTokens(HttpContext).RequestToken';
+
+        document.querySelectorAll('.buy-now-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const index = this.getAttribute('data-index');
+
+                fetch('@Url.Page("OrderNotification", "BuyNow")', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': antiForgeryToken
+                    },
+                    body: JSON.stringify({ NotificationIndex: index })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire('Success!', 'Stock reduced successfully.', 'success');
+                        document.getElementById('notification-' + index).remove();
+                    } else {
+                        Swal.fire('Error!', 'Failed to reduce stock.', 'error');
+                    }
+                })
+                .catch(() => {
+                    Swal.fire('Error!', 'An error occurred.', 'error');
+                });
+            });
+        });
+
+        document.querySelectorAll('.remove-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const index = this.getAttribute('data-index');
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "Do you want to remove this notification?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Yes, remove it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        fetch('@Url.Page("OrderNotification", "Remove")', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'RequestVerificationToken': antiForgeryToken
+                            },
+                            body: JSON.stringify({ NotificationIndex: index })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                Swal.fire('Removed!', 'Notification has been removed.', 'success');
+                                document.getElementById('notification-' + index).remove();
+                            } else {
+                                Swal.fire('Error!', 'Failed to remove notification.', 'error');
+                            }
+                        })
+                        .catch(() => {
+                            Swal.fire('Error!', 'An error occurred.', 'error');
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+

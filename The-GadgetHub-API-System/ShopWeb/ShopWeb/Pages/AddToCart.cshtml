@@ -1,0 +1,33 @@
+﻿@page "{id:int}"
+@model ShopWeb.Pages.AddToCartModel
+
+<h2>Add to Cart</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label class="form-label"><strong>Product Name:</strong></label>
+        <p class="form-control-plaintext">@Model.Item.Name</p>
+    </div>
+    <div class="mb-3">
+        <label class="form-label"><strong>Description:</strong></label>
+        <p class="form-control-plaintext">@Model.Item.Description</p>
+    </div>
+
+  
+    <div>
+        <label>Quantity:</label>
+        <input asp-for="Item.Quantity" class="form-control" min="1" />
+    </div>
+    <input type="hidden" asp-for="Item.ProductId" />
+    <button type="submit" class="btn btn-primary" asp-page-handler="AddToCart">Add to Cart</button>
+</form>
+
+
+@if (TempData["success"] != null)
+{
+    <div class="alert alert-success mt-3">@TempData["success"]</div>
+}
+@if (TempData["fail"] != null)
+{
+    <div class="alert alert-danger mt-3">@TempData["fail"]</div>
+}

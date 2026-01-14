@@ -1,0 +1,32 @@
+﻿@page
+@model ShopWeb.Pages.EditItemModel
+@{
+}
+<h2>Add/Edit Item</h2>
+<form method="post">
+    <table>
+        <tr>
+            <td>ID</td>
+            <td><input type="number" asp-for="item.Id" readonly></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td><input type="text" asp-for="item.Name" required/> </td>
+        </tr>
+       
+        <tr>
+            <td>Description</td>
+            <td>
+                <textarea cols="23" rows="6" asp-for="item.Description"></textarea></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" name="btnAdd" value="Add" />
+                <input type="submit" name="btnUpdate" value="Update" />
+                <input type="submit" name="btnDelete" value="Delete" />
+            </td>
+        </tr>
+    </table>
+
+</form>
