@@ -86,7 +86,7 @@ Each distributor database stores its own product and stock data.
 ---
 
 ## Author
-**Pasindu Himasha** – Aspiring Software Developer with an interest in web application development and system design.  
+**Pasindu Himasha**
 
 ---
 
